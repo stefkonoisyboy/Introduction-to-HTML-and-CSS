@@ -91,3 +91,108 @@ let undefineValue;
 console.log(undefineValue);
 
 // Conditionals
+
+// Logical operators - &&, ||, !
+// Comparison operators - ==, ===, !=, !==, >=, <=
+
+const expression = 5 > 3 && 5 < 3;
+
+if (expression) {
+  console.log("True");
+} else {
+  console.log("False");
+}
+
+// Truthy and falsy
+
+// Truthy - 10, "Hello", { age: 21 }, [1, 2, 3], true
+// Falsy - 0, "", undefined, null, false
+
+let falsyObj = null;
+
+if (falsyObj) {
+  console.log("Truthy");
+} else {
+  console.log("Falsy");
+}
+
+falsyObj = { name: "Didi" };
+
+if (falsyObj) {
+  console.log("Truthy");
+} else {
+  console.log("Falsy");
+}
+
+let emptyStr = "";
+
+if (emptyStr) {
+  console.log("Non-empty string");
+} else {
+  console.log("Empty string");
+}
+
+// Call from backend
+let data = null;
+
+// Nullable operator
+console.log(data?.name); // Take into account when working with real data as response might be delayed and initial value could be null/undefined
+
+if (data) {
+  console.log(data.name);
+} else {
+  console.log("No value");
+}
+
+// <boolean_expression> ? if true : if false
+console.log(5 > 3 ? "Ternary yes" : "Ternary no");
+
+// Functions
+
+// Classic
+function sum(a, b) {
+  return a + b;
+}
+
+const sumResult = sum(3, 5);
+console.log("Sum: " + sumResult);
+
+// Arrow functions (Optional)
+const arrowSum = (a, b) => {
+  return a + b;
+};
+
+console.log("Arrow sum: " + arrowSum(4, 5));
+
+function scopeFunc() {
+  let variable = 3;
+}
+
+// console.log(variable); - will throw an error because this variable is not defined in the current scope
+
+// Errors
+
+// Type Errors
+// const reference = null;
+// console.log(reference.name); - Trying to access null value
+
+// Syntax Errors
+// let sdf-dfd = 3; - Invalid JS syntax
+
+// Reference Errors
+// console.log(notExistingVar); - When variable is not declared
+
+// Problem solving
+
+// Understand the problem - our onboarding process should allow users to register and to create their own organizations + allow users to invite other users
+// What is the expected behavior - where is the entrypoint, where should user be redirected
+
+// Prepare a plan
+// what flows/scenarios should be supported, what will be the user input, where do we store information in DB, what will be the output
+
+// Pilot implementation, PoC (Proof of Concept), pseudocode - how to implement with programming language and/or framework/library (Angular, React, .NET)
+// Implement registration - use external provider (research)
+// Implement user onboarding - first step - personal information; second step - preferences - language, timezone, third step - data storage location
+// Implement organization onboarding
+// Redirect to dashboard
+// Leave organization - if users do not have more organizations, they should have access only to profile page
