@@ -196,3 +196,134 @@ function scopeFunc() {
 // Implement organization onboarding
 // Redirect to dashboard
 // Leave organization - if users do not have more organizations, they should have access only to profile page
+
+// Loops
+for (let i = 0; i < 5; i++) {
+  console.log("Loop: " + i);
+}
+
+let forInExampleObj = {
+  name: "Didi",
+  age: 18,
+};
+
+for (const key in forInExampleObj) {
+  console.log("For-in: " + key);
+} // For traversing keys of objects
+
+const arrForOf = ["Didi", "Stefko", "=", "Love"];
+
+for (const value of arrForOf) {
+  console.log("For-of: " + value);
+} // foreach in C#
+
+let whileIndex = 0;
+
+while (whileIndex < 3) {
+  console.log("While: " + whileIndex);
+  whileIndex++;
+}
+
+let doWhileIndex = 0;
+
+do {
+  console.log(`Do-while: ${doWhileIndex++}`);
+} while (doWhileIndex < 3);
+
+// Arrays
+let nums = [1, 2, 3];
+console.log("First element: " + nums[0]);
+console.log("Last element: " + nums[nums.length - 1]);
+
+// Built-in methods
+// Build-in array methods in JS are mutable and immutable.
+// Mutable is when the method changes the same array.
+// Immutable is when the method does not change the same array, but creates a new copy instead.
+
+nums.push(4); // Mutable
+nums.push(5); // Appends an element to the end of the array
+console.log("Nums: ", nums);
+
+nums.pop(); // Removes the last element from the array
+console.log("Nums: ", nums);
+
+nums.shift(); // Removes the first element from the array
+console.log("Nums: ", nums);
+
+nums.unshift(18); // Adds an element at the beginning of the array
+console.log("Nums: ", nums);
+
+nums.splice(1, 2); // Removes 2 elements, starting from index 0
+console.log("Nums: ", nums);
+
+nums.splice(1, 1, 45, 46); // Removes 1 element from index 1 and adds "45" and "46", starting from index 1
+console.log("Nums: ", nums);
+
+nums.splice(1, 0, 50, 60); // Inserts "50" and "60", starting from index 1
+console.log("Nums: ", nums);
+
+// arr.splice(startIndex, deleteCount, item1, item2, ...)
+// startIndex - The position where you start removing elements and/or adding elements
+// deleteCount - The number of elements we want to remove from the array, starting from `startIndex`
+// item1, item2, ... - The elements we want to insert into the array, starting from `startIndex`
+
+const slicedNums = nums.slice(1, 3); // Immutable, endIndex is exclusive - end element will be at endIndex - 1
+console.log("Sliced: ", slicedNums);
+
+nums.forEach((item, index) => {
+  console.log("forEach: " + item + ` Index: ${index}`);
+}); // The same as for-of loop
+
+const mappedNums = nums.map((num) => {
+  return num + 2;
+});
+
+console.log("Mapped nums", mappedNums);
+
+const complexArr = [
+  {
+    name: "Didi",
+    age: 18,
+    gender: "Female",
+  },
+  {
+    name: "Stefko",
+    age: 21,
+    gender: "Male",
+  },
+];
+
+const mappedComplexArr = complexArr.map((person) => {
+  // const result = {
+  //   name: person.name,
+  //   age: person.name,
+  //   name_age: person.name + ": " + person.age
+  // }
+
+  const result = {
+    ...person, // This is called spread operator which retrieves all key-values from the object, it gets "name" and "age" properties in our case
+    name_age: person.name + ": " + person.age,
+  }; // It is the same as the above
+
+  return result;
+});
+
+console.log("Mapped complex arr: ", mappedComplexArr);
+
+const filteredNums = nums.filter((num) => {
+  return num % 2 === 0;
+});
+
+console.log("Filtered nums", filteredNums);
+
+nums.sort((a, b) => {
+  if (a > b) {
+    return 1;
+  } else if (a < b) {
+    return -1;
+  }
+
+  return 0;
+}); // Bonus method
+
+console.log("Sorted nums", nums);
