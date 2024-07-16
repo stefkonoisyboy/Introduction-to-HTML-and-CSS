@@ -38,3 +38,13 @@ img {
 .block {
   display: block;
 }
+
+.red-border-div {
+  border: 2px solid red;
+  height: 100px;
+}
+
+.attribute-class {
+  border: 2px solid blue;
+  height: 100px;
+}

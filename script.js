@@ -327,3 +327,81 @@ nums.sort((a, b) => {
 }); // Bonus method
 
 console.log("Sorted nums", nums);
+
+// DOM (Document Object Model) and Events in JS
+
+// Retrieve DOM elements
+const liItems = Array.from(document.querySelectorAll("li")); // DOM elements are fetched as NodeList which is similar to array, but it has its own specifics. Use Array.from() for full array experience
+console.log("Li items", liItems);
+
+// Retrieve a single DOM element
+const navbar = document.querySelector("nav"); // Retrieves the first element
+console.log("Navbar", navbar);
+
+const someClassElement = document.querySelector(".some-class");
+console.log("Some class element", someClassElement);
+
+// Create a DOM element
+// 1. Retrieve element that we want to attach our new element to
+const body = document.querySelector("body");
+
+// 2. Create and manipulate the new element as per requirements
+const newDiv = document.createElement("div");
+// newDiv.style.border = "2px solid red"; - Using classList is considered a best practice
+newDiv.classList.add("red-border-div");
+newDiv.setAttribute("id", "dynamic-id");
+newDiv.setAttribute("style", "background-color: pink;"); // Bad practice for CSS
+// newDiv.setAttribute("class", "attribute-class"); - classList is the preferred way for CSS manipulation
+
+// 3. Append the new element to the parent
+body.appendChild(newDiv);
+
+console.log("ID", newDiv.getAttribute("id"));
+
+// Update a DOM element
+body.classList.add("moshtno-body");
+
+// Delete a DOM element
+const h1 = document.createElement("h1");
+h1.textContent = "Dynamic H1";
+// h1.innerHTML = "<script>alert()</script>" - Risk for Cross-site scripting attacks - NEVER USE IT!!!
+
+body.appendChild(h1);
+
+// h1.remove(); - One way to remove an element from the DOM
+body.removeChild(h1); // Another way to do the same
+
+// Events
+
+// 1. Attach event listeners inline - <button onclick="someClickFunction()">Click button</button>
+
+const domButton = document.querySelector("#dom-button");
+// 2. Attach event listeners like this: domButton.onclick = addDomElement; - Not best practice
+
+// 3. Use "addEventListener"
+domButton.addEventListener("click", function (e) {
+  // e.stopPropagation(); Stops Event Bubbling
+  console.log("Target", e.target);
+  console.log("Child");
+  addDomElement();
+});
+
+// Event Capturing and Event Bubbling
+const domButtonContainer = document.querySelector("#dom-button-parent");
+domButtonContainer.addEventListener(
+  "click",
+  function (e) {
+    console.log("Parent");
+  }
+  //true
+); // True is to trigger the event on Event Capturing phase
+
+// Helper function - do not pay attention to it
+function addDomElement() {
+  const main = document.querySelector("main");
+
+  const h1 = document.createElement("h1");
+  h1.textContent = "Didi e nai-prekrasnata jena na sveta <3";
+
+  main.appendChild(h1);
+}
